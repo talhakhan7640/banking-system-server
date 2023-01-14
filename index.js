@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
+import serverless from 'serverless-http';
 import UserRouter from './routes/userRoute.js';
 import authenticateUser from './auth.js';
 
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (request, response) => {
- response.send("You are trying to access backend of nearby developer!!") 
+ response.send("You are trying to access backend of banking management system!!") 
 })
 
 // User Routes
@@ -59,3 +60,6 @@ try {
 } catch (e) {
   console.log("Could not connect, Something went wrong");
 }
+
+module.exports = app;
+module.exports.handler = serverless(app);
