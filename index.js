@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
-import serverless from 'serverless-http';
 import UserRouter from './routes/userRoute.js';
 import authenticateUser from './auth.js';
 
@@ -32,8 +31,8 @@ app.get("/auth-endpoint", authenticateUser, (request, response) => {
 });
 
 // Handling CORS Errors
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+/*app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
@@ -43,7 +42,7 @@ app.use((req, res, next) => {
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
   next();
-});
+}); */
 
 try {
   mongoose
@@ -60,6 +59,3 @@ try {
 } catch (e) {
   console.log("Could not connect, Something went wrong");
 }
-
-module.exports = app;
-module.exports.handler = serverless(app);
