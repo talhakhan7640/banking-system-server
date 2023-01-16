@@ -31,7 +31,7 @@ app.get("/auth-endpoint", authenticateUser, (request, response) => {
 });
 
 // Handling CORS Errors
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -42,7 +42,7 @@ app.get("/auth-endpoint", authenticateUser, (request, response) => {
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
   next();
-}); */
+}); 
 
 try {
   mongoose
@@ -59,3 +59,5 @@ try {
 } catch (e) {
   console.log("Could not connect, Something went wrong");
 }
+
+//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
